@@ -1,3 +1,11 @@
+/*
+ * @Author: Pacific_D
+ * @Date: 2022-03-27 10:21:53
+ * @LastEditTime: 2022-03-27 12:06:35
+ * @LastEditors: Pacific_D
+ * @Description:
+ * @FilePath: \src\HTTP\http-client.go
+ */
 package main
 
 import (
@@ -9,9 +17,9 @@ import (
 func main() {
 	//http包
 	client := http.Client{}
-	resp, err := client.Get("https://zuanbot.com/api.php?level=min&lang=zh_cn")
-	if err != nil{
-		fmt.Println("Client.Get err: ",err)
+	resp, err := client.Get("http://localhost:8080/name")
+	if err != nil {
+		fmt.Println("Client.Get err: ", err)
 		return
 	}
 
@@ -25,8 +33,8 @@ func main() {
 
 	body := resp.Body
 	readBodyStr, err := ioutil.ReadAll(body)
-	if err != nil{
-		fmt.Println("read body err: ",err)
+	if err != nil {
+		fmt.Println("read body err: ", err)
 		return
 	}
 
@@ -36,5 +44,5 @@ func main() {
 	fmt.Println(url)
 	fmt.Println(code)
 	fmt.Println(status)
-	fmt.Println("body string: ",string(readBodyStr))
+	fmt.Println("body string: ", string(readBodyStr))
 }
